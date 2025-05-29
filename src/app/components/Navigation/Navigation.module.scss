@@ -1,0 +1,50 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+    
+  .headerTop {
+    display: flex;
+    padding: 10px 10px;
+    align-items: center;
+  }
+  
+  
+  .search-bar {
+    padding: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .cart a {
+    margin: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    
+  }
+  
+  .auth a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #000;
+  }
+  
+  .authBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .authBtn span {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px;
+    font-family: 'Inter', 'Inter Fallback';
+  }

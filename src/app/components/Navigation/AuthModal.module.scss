@@ -1,0 +1,76 @@
+.overlay {
+  position: fixed;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.modal {
+  color: #fff;
+  width: 300px;
+  background: #ffffff;
+  border: 4px solid #a3a3a3;
+  border-radius: 10px;
+  padding: 24px 24px 16px 24px;
+  position: relative;
+  top: 140px;
+  left: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12px; right: 12px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form input {
+  padding: 8px 12px;
+  border: 4px solid #a3a3a3;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.loginBtn {
+  background: #fff;
+  color: #000;
+  font-weight: bold;
+  border: 4px solid #a3a3a3;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+
+
+.hr {
+  border: none;
+  border-top: 1px solid #fff2;
+  margin: 16px 0;
+}
+
+.registerBtn {
+  background: none;
+  color: #000000;
+  font-weight: bold;
+  border: none;
+  font-size: 1.1rem;
+  text-align: left;
+  cursor: pointer;
+  padding: 8px 0 0 0;
+}
+  
