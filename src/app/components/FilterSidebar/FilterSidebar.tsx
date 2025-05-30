@@ -117,8 +117,8 @@ const FilterSidebar: React.FC<FilterSidebarProps> = ({category}) => {
             </div>
             </>
             )}
-            <button>Показать</button>
-            <button>Сбросить</button>
+            <button className={styles.filtrBtn}>Показать</button>
+            <button className={styles.filtrBtn}>Сбросить</button>
         </div>
     );
 };

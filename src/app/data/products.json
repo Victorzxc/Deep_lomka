@@ -4,7 +4,7 @@
       "name": "Горные лыжи K2 Fatty",
       "description": "Отличные лыжи для фрирайда",
       "price": 23166,
-      "imageUrl": "/images/k2_fatty.jpg",
+      "imageUrl": "/images/burton_custom.jpg",
       "categoryId": "alpine-skis"
     },
     {
@@ -12,7 +12,7 @@
       "name": "Горные лыжи K2 Poacher",
       "description": "Лыжи для парка и пайпа",
       "price": 34320,
-      "imageUrl": "/images/k2_poacher.jpg",
+      "imageUrl": "/images/burton_custom.jpg",
       "categoryId": "alpine-skis"
     },
     {
@@ -36,7 +36,7 @@
       "name": "Крепления Salomon Warden MNC 13",
       "description": "Salomon Warden MNC 13 - надежные крепления...",
       "price": 18000,
-      "imageUrl": "/images/ski-bindings-2.jpg",
+      "imageUrl": "/images/ski-bindings-1.jpg",
       "categoryId": "ski-bindings"
     },
     {
@@ -44,7 +44,7 @@
       "name": "Крепления Salomon Warden MNC 13",
       "description": "Salomon Warden MNC 13 - надежные крепления...",
       "price": 18000,
-      "imageUrl": "/images/ski-bindings-2.jpg",
+      "imageUrl": "/images/ski-bindings-1.jpg",
       "categoryId": "ski-bindings"
     },
     {
@@ -60,7 +60,7 @@
       "name": "Сноуборд Jones Flagship",
       "description": "Мощный фрирайд сноуборд...",
       "price": 55000,
-      "imageUrl": "/images/snowboard-2.jpg",
+      "imageUrl": "/images/snowboard-1.jpg",
       "categoryId": "snowboards"
     },
     {
@@ -76,7 +76,7 @@
       "name": "Защитные шорты Demon FlexForce X D3O",
       "description": "Защитные шорты с защитой копчика и бедер...",
       "price": 6000,
-      "imageUrl": "/images/protection-2.jpg",
+      "imageUrl": "/images/protection-1.jpg",
       "categoryId": "protection"
     },
     {
@@ -93,7 +93,7 @@
       "name": "Перчатки горнолыжные Level",
       "description": "Теплые и водонепроницаемые перчатки...",
       "price": 7000,
-      "imageUrl": "/images/equipment-2.jpg",
+      "imageUrl": "/images/equipment-1.jpg",
       "categoryId": "equipment",
       "type": "Перчатки",
       "size": "M"
