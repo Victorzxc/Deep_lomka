@@ -1,27 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
-import ProductList from '@/app/components/ProductList/ProductList';
-import FilterSidebar from '@/app/components/FilterSidebar/FilterSidebar';
 import styles from './ProtectionPage.module.scss';
-import productsData from '@/app/data/products.json';
+import { fetchProducts } from '@/app/utils/api';
+import { Product } from '@/app/types/product';
+import ProtectionClient from './ProtectionClient';
 
-const ProtectionPage = () => {
-  const protectionProducts = productsData.filter(product => product.categoryId === "protection");
+const PROTECTION_CATEGORY_ID = 8;
 
-  return (
-    <div className={styles.protectionPage}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Защита</h1>
-        <div className={styles.breadcrumbs}>
-          <Link href="/">Назад</Link> / <Link href="/catalog">Каталог</Link> / Защита
+export default async function ProtectionPage() {
+    const products: Product[] = await fetchProducts();
+    const protectionProducts = products.filter(product => product.categoryId === PROTECTION_CATEGORY_ID);
+
+    return (
+        <div className={styles.protectionPage}>
+            <div className={styles.header}>
+                <h1 className={styles.title}>Защита</h1>
+                <div className={styles.breadcrumbs}>
+                    <Link href="/">Назад</Link> / <Link href="/catalog">Каталог</Link> / Защита
+                </div>
+            </div>
+            <div className={styles.content}>
+                <ProtectionClient initialProducts={protectionProducts} />
+            </div>
         </div>
-      </div>
-      <div className={styles.content}>
-        <FilterSidebar category="protection" />
-        <ProductList products={protectionProducts} />
-      </div>
-    </div>
-  );
-};
-
-export default ProtectionPage;
+    );
+}

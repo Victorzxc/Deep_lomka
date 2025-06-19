@@ -1,0 +1,159 @@
+.filterSidebar {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    padding: 28px 24px;
+    min-width: 320px;
+    max-width: 360px;
+    font-family: inherit;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+}
+
+
+.filterGroup {
+    margin-bottom: 26px;
+}
+
+.filterGroup h3 {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.filterGroup label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    user-select: none;
+    position: relative;
+}
+
+.filterGroup input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #d0d0d0;
+    border-radius: 6px;
+    background: #fafbfc;
+    margin-right: 8px;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+
+.filterGroup input[type="checkbox"]:checked {
+    border-color: #008383;
+    background: #008383;
+}
+
+.filterGroup input[type="checkbox"]:checked::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 3px auto;
+    border-radius: 2px;
+    background: #fff;
+}
+
+.filterGroup input[type="number"] {
+    width: 100px;
+    padding: 6px 10px;
+    border: 1px solid #d0d0d0;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+
+.filtrBtn {
+    border: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 5px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #005858;
+    padding: 10px 20px;
+    margin: 8px 8px 0;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #009999;
+    }
+}
+
+.filtrBtn:last-child {
+    background: #eee;
+    color: #222;
+
+    &:hover {
+        background: #e0e0e0;
+    }
+}
+
+.filterGroup .rangeTrack {
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin: 20px 10px 15px 10px;
+    position: relative;
+}
+
+.filterGroup .rangeThumb {
+    width: 20px;
+    height: 20px;
+    background: #005858;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.12);
+    cursor: pointer;
+    transition: background 0.18s;
+    position: relative;
+}
+
+.filterGroup .rangeThumb:active {
+    background: #009999;
+}
+
+.inputRigidity {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 355px;
+    height: 8px;
+    background: #e0e0e0;
+    cursor: pointer;
+    border-radius: 4px;
+    outline: none;
+}
+
+.inputRigidity::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 23px;
+    height: 23px;
+    background: #005858;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.12);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+}
+
+.inputRigidity::-webkit-slider-thumb:hover {
+    background: #007373;
+}
+
+.inputRigidity:focus {
+    box-shadow: 0 0 0 3px rgba(0, 88, 88, 0.5);
+}

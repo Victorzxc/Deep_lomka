@@ -1,50 +1,72 @@
 .header {
-    display: flex;
-    justify-content: space-around;
     background-color: #f0f0f0;
-    padding: 10px;
-  }
-    
-  .headerTop {
+    padding: 10px 0;
+}
+
+.headerRow {
     display: flex;
-    padding: 10px 10px;
     align-items: center;
-  }
-  
-  
-  .search-bar {
-    padding: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .cart a {
-    margin: 10px;
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    
-  }
-  
-  .auth a {
-    margin-left: 10px;
-    text-decoration: none;
-    color: #000;
-  }
-  
-  .authBtn {
+    justify-content: space-between;
+}
+
+
+.leftPlaceholder,
+.rightBlock {
+    width: 200px;
+}
+
+.centerLogo {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.rightBlock {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.authBtn {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px 10px;
+    padding: 10px;
     border-radius: 3px;
     display: flex;
     align-items: center;
-  }
-  
-  .authBtn span {
+}
+
+.authBtn span {
     color: #000;
     font-weight: bold;
     font-size: 1.05rem;
     letter-spacing: 0.2px;
     font-family: 'Inter', 'Inter Fallback';
-  }
+}
+
+.userEmail {
+    padding: 6px 12px;
+    font-weight: bold;
+    color: #000;
+
+}
+
+.icons {
+    color: black;
+}
+
+.leftIcons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: center;
+}
+
+.iconBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+}

@@ -1,0 +1,101 @@
+.pageContainer {
+    max-width: auto;
+    margin: 0 auto;
+    padding: 0 20px 40px 20px;
+    background-color: #ccc;
+}
+
+.heroBanner {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 340px;
+    background: url('/images/hero-ski.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 48px;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.10);
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(20, 40, 60, 0.32);
+    }
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+
+    h1 {
+        font-size: 40px;
+        margin-bottom: 12px;
+        font-weight: 800;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    }
+
+    p {
+        font-size: 25px;
+        font-weight: 500;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.sectionTitle {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 30px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.carouselWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.arrow {
+    background: #fff;
+    border: none;
+    font-size: 2.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    border: #a3a3a3, 3px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+
+    &:hover {
+        background: #919191;
+        transition: 0.5s;
+    }
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 16px;
+    padding: 16px 0;
+    width: 1200px;
+    box-shadow: inset 30px 0 10px -30px rgba(0, 0, 0, 0.6),
+        inset -30px 0 10px -30px rgba(0, 0, 0, 0.6);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}

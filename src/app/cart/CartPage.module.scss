@@ -1,0 +1,138 @@
+.cartContainer {
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+    height: 100%;
+    padding: 40px 5vw;
+    background: #ccc;
+}
+
+.cartList {
+    flex: 1;
+}
+
+.cartTitle {
+    font-size: 2rem;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0001;
+    padding: 16px 20px;
+    gap: 16px;
+}
+
+.cartItemImage {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #f2f2f2;
+    object-fit: contain;
+}
+
+.cartItemInfo {
+    flex: 1;
+    min-width: 0;
+}
+
+.cartItemName {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cartItemPrice {
+    color: #0a6912;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.cartItemControls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cartRemoveBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 12px;
+    color: #e53935;
+    font-size: 1.8rem;
+    transition: color 0.15s;
+
+    &:hover {
+        color: #b71c1c;
+    }
+}
+
+.cartSidebar {
+    min-width: 240px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cartOrderBtn {
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007373;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px;
+
+    &:disabled {
+        background: #aaa;
+        cursor: not-allowed;
+    }
+}
+
+.buttonQuantity {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 50%;
+    border-color: #dadada;
+    background-color: #dadada;
+    width: 35px;
+    height: 35px;
+    font-size: 30px;
+    color: #7a7a7a;
+
+    &:hover {
+        color: #272727;
+    }
+}
+
+.deliveryBlock {
+    height: 30px;
+    margin-bottom: 18px;
+}
+
+.citySelect,
+.cityInput {
+    cursor: pointer;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+    font-size: 20px;
+    margin-top: 4px;
+}

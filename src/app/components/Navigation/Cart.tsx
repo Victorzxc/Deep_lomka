@@ -1,13 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
+import { FaShoppingCart } from 'react-icons/fa';
 import styles from './Navigation.module.scss'
 
 const Cart: React.FC = () => {
-  return (
-    <nav className={styles.cart}>
-      <Link href="/cart">Корзина</Link>
-    </nav>
-  );
+    return (
+        <nav>
+            <Link href="/cart">
+                <FaShoppingCart className={styles.icons} size={30} />
+            </Link>
+        </nav>
+    );
 };
 
-export default Cart;
+export default Cart; 

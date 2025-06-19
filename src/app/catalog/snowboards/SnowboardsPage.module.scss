@@ -2,39 +2,41 @@
     background-color: white;
     padding: 20px;
     margin: 20px auto;
-    max-width: 1200px;
+    max-width: 1600px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header {
+}
+
+.header {
     margin-bottom: 20px;
-  }
-  
-  .title {
+}
+
+.title {
     font-size: 2em;
     margin-bottom: 10px;
-  }
-  
-  .breadcrumbs {
+}
+
+.breadcrumbs {
     font-size: 0.8em;
+
     a {
-      text-decoration: none;
-      color: #333;
-      &:hover {
-        text-decoration: underline;
-      }
+        text-decoration: none;
+        color: #333;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
-  }
-  
-  .content {
+}
+
+.content {
     display: flex;
-  }
-  
-  .filterSidebar {
-    width: 250px;
+}
+
+.filterSidebar {
+    width: auto;
     margin-right: 20px;
-  }
-  
-  .productList {
+}
+
+.productList {
     flex: 1;
-  }
+}

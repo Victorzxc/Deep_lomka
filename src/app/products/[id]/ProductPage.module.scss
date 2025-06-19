@@ -7,80 +7,105 @@
 }
 
 .breadcrumbs {
-  font-size: 0.8em;
-  margin-bottom: 10px;
-  a {
-    text-decoration: none;
-    color: #333;
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-  
+    font-size: 0.8em;
+    margin-bottom: 10px;
 
-.img{
-    object-fit: scale-down;
+    a {
+        text-decoration: none;
+        color: #333;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
+
+
+.img {
+    object-fit: scale-down;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+    border-radius: 15px;
+}
+
 .productContainer {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 .imageColumn {
-  width: 400px;
-  flex-shrink: 0;
+    width: 400px;
+    flex-shrink: 0;
 }
 
 .detailsColumn {
-  flex: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 20px 20px;
 }
 
 .productName {
-  font-size: 2em;
-  margin-bottom: 10px;
+    font-size: 2em;
 }
 
 .description {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .characteristics {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .characteristic {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
 
 .characteristicLabel {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .priceContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 .price {
-  font-size: 1.5em;
-  font-weight: bold;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 .addToCartButton {
-  background-color: #ffc107;
-  color: #333;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
+    border: none;
+    max-width: 400px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
 
-  &:hover {
-    background-color: #ffb300;
-  }
+
+    &:hover {
+        background-color: #008383;
+        color: #fff;
+        transition: color, background-color 1s ease;
+    }
+
+}
+.brandLogo{
+    object-fit: scale-down;
+    border-radius: 5px;
+    border: 3px solid #ccc;
+}
+.logoName{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -2,91 +2,109 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './ProductPage.module.scss';
-import productsData from '@/app/data/products.json';
-
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
-}
-
-const ProductPage: React.FC<ProductPageProps> = ({ params }) => {
-  const { id } = params;
-  const product = productsData.find(product => product.id === id);
-
-  if (!product) {
-    return <div>Товар не найден</div>;
-  }
+import { fetchProductById, fetchProductCharacteristics } from '@/app/utils/api';
+import { Product, ProductCharacteristic } from '@/app/types/product';
+import AddToCartButton from './AddToCartButton';
 
 
-  let categoryLink = '';
-  let categoryName = '';
 
-  switch (product.categoryId) {
-    case 'alpine-skis':
-      categoryLink = '/catalog/alpine-skis';
-      categoryName = 'Горные лыжи';
-      break;
-    case 'ski-bindings':
-      categoryLink = '/catalog/ski-bindings';
-      categoryName = 'Крепления для горных лыж';
-      break;
-    case 'snowboards':
-      categoryLink = '/catalog/snowboards';
-      categoryName = 'Сноуборды';
-      break;
-    case 'protection':
-      categoryLink = '/catalog/protection';
-      categoryName = 'Защита';
-      break;
-    case 'equipment':
-      categoryLink = '/catalog/equipment';
-      categoryName = 'Экипировка';
-      break;
-    default:
-      categoryLink = '/catalog';
-      categoryName = 'Каталог';
-  }
-
-  return (
-    <div className={styles.productPage}>
-      <div className={styles.breadcrumbs}>
-        <Link href="/">Назад</Link> / <Link href="/catalog">Каталог</Link> / <Link href={categoryLink}>{categoryName}</Link> / {product.name}
-      </div>
-      <div className={styles.productContainer}>
-        <div className={styles.imageColumn}>
-          <Image className={styles.img}
-            src={product.imageUrl}
-            alt={product.name}
-            width={400}
-            height={400}
-
-          />
-        </div>
-        <div className={styles.detailsColumn}>
-          <h1 className={styles.productName}>{product.name}</h1>
-          <p className={styles.description}>{product.description}</p>
-          <div className={styles.characteristics}>
-            {Object.entries(product).map(([key, value]) => {
-              if (!['id', 'name', 'description', 'price', 'imageUrl', 'categoryId'].includes(key) && value) {
-                return (
-                  <div className={styles.characteristic} key={key}>
-                    <span className={styles.characteristicLabel}>{key}:</span>
-                    <span>{value}</span>
-                  </div>
-                );
-              }
-              return null;
-            })}
-          </div>
-          <div className={styles.priceContainer}>
-            <span className={styles.price}>${product.price.toFixed(2)}</span>
-            <button className={styles.addToCartButton}>Добавить в корзину</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+const CATEGORY_MAP: Record<number, { link: string; name: string }> = {
+    5: { link: '/catalog/alpine-skis', name: 'Горные лыжи' },
+    7: { link: '/catalog/ski-bindings', name: 'Крепления для горных лыж' },
+    10: { link: '/catalog/snowboards', name: 'Сноуборды' },
+    8: { link: '/catalog/protection', name: 'Защита' },
+    6: { link: '/catalog/ski-boots', name: 'Горнолыжные ботинки' },
 };
 
-export default ProductPage;
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL 
+async function fetchBrands() {
+    const res = await fetch(`${BACKEND_URL}/brands`);
+    if (!res.ok) throw new Error('Ошибка загрузки брендов');
+    return res.json();
+}
+
+export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const productId = Number(id);
+    let product: Product;
+    let characteristics: ProductCharacteristic[] = [];
+    let brands: { id: number; name: string; logoUrl: string }[] = [];
+
+    try {
+        product = await fetchProductById(productId);
+        characteristics = await fetchProductCharacteristics(productId);
+        brands = await fetchBrands();
+    } catch {
+        return <div>Товар не найден</div>;
+    }
+
+    const category = CATEGORY_MAP[product.categoryId] || { link: '/catalog', name: 'Каталог' };
+
+    const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+    const imageSrc = product.imageUrl.startsWith('http')
+        ? product.imageUrl
+        : `${BACKEND_URL}${product.imageUrl}`;
+
+    const brand = brands.find(b => b.id === product.brandId);
+
+    const brandLogoSrc = brand
+        ? (brand.logoUrl.startsWith('http')
+            ? brand.logoUrl
+            : `${process.env.NEXT_PUBLIC_BACKEND_URL}${brand.logoUrl}`)
+        : null;
+
+
+    return (
+        <div className={styles.productPage}>
+            <div className={styles.breadcrumbs}>
+                <Link href="/">Назад</Link> / <Link href="/catalog">Каталог</Link> /{' '}
+                <Link href={category.link}>{category.name}</Link> / {product.name}
+            </div>
+            <div className={styles.productContainer}>
+                <div className={styles.imageColumn}>
+                    <Image
+                        className={styles.img}
+                        src={imageSrc}
+                        alt={product.name}
+                        width={400}
+                        height={400}
+                        unoptimized={true}
+                    />
+                </div>
+                <div className={styles.detailsColumn}>
+                    <div>
+                        <div className={styles.logoName}>
+                        <h1 className={styles.productName}>
+                            {product.name}
+                        </h1>
+                        {brandLogoSrc && (
+                            <Image
+                                src={brandLogoSrc}
+                                alt={brand?.name || 'Логотип бренда'}
+                                width={70}
+                                height={70}
+                                className={styles.brandLogo}
+                                unoptimized={true}
+                            />
+                        )}
+                        </div>
+  
+                        <p className={styles.description}>{product.description}</p>
+                        <div className={styles.characteristics}>
+                            {characteristics.map((ch) => (
+                                <div className={styles.characteristic} key={ch.id}>
+                                    <span className={styles.characteristicLabel}>{ch.characteristic.name}:</span>
+                                    <span>{ch.value} {ch.characteristic.unit}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className={styles.priceContainer}>
+                        <span className={styles.price}>{product.price.toFixed(2)} ₽</span>
+                        <AddToCartButton productId={product.id} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

@@ -1,0 +1,170 @@
+.pageContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.ordersBanner {
+    height: 280px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    background-image: url('/images/2_mountains_landscape_nature.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 16px;
+    }
+}
+
+.bannerTitle {
+    color: white;
+    font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ordersList {
+    display: grid;
+    gap: 24px;
+}
+
+.orderCard {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.orderId {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.orderDate {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.orderStatus {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    &[data-status="processing"] {
+        background: #fff3cd;
+        color: #856404;
+    }
+
+    &[data-status="shipped"] {
+        background: #d4edda;
+        color: #155724;
+    }
+
+    &[data-status="delivered"] {
+        background: #d1ecf1;
+        color: #0c5460;
+    }
+}
+
+.shippingAddress {
+    color: #444;
+    margin: 12px 0;
+    font-size: 0.95rem;
+
+    b {
+        color: #333;
+    }
+}
+
+.itemsList {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.itemImage {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    margin-right: 16px;
+    object-fit: contain;
+    border: 1px solid #eee;
+}
+
+.itemName {
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.itemPrice {
+    font-weight: 600;
+    min-width: 100px;
+    text-align: right;
+}
+
+.totalAmount {
+    text-align: right;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+}
+
+.loading,
+.empty {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.error {
+    text-align: center;
+    padding: 40px;
+    color: #dc3545;
+    font-weight: 500;
+}

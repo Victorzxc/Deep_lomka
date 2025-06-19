@@ -1,27 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
-import ProductList from '@/app/components/ProductList/ProductList';
-import FilterSidebar from '@/app/components/FilterSidebar/FilterSidebar';
 import styles from './SnowboardsPage.module.scss';
-import productsData from '@/app/data/products.json';
+import { fetchProducts } from '@/app/utils/api';
+import { Product } from '@/app/types/product';
+import SnowboardsClient from './SnowboardsClient';
 
-const SnowboardsPage = () => {
-  const snowboards = productsData.filter(product => product.categoryId === "snowboards");
+const SNOWBOARDS_CATEGORY_ID = 10;
 
-  return (
-    <div className={styles.snowboardsPage}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>Сноуборды</h1>
-        <div className={styles.breadcrumbs}>
-          <Link href="/">Назад</Link> / <Link href="/catalog">Каталог</Link> / Сноуборды
+export default async function SnowboardsPage() {
+    const products: Product[] = await fetchProducts();
+    const snowboards = products.filter(product => product.categoryId === SNOWBOARDS_CATEGORY_ID);
+
+    return (
+        <div className={styles.snowboardsPage}>
+            <div className={styles.header}>
+                <h1 className={styles.title}>Сноуборды</h1>
+                <div className={styles.breadcrumbs}>
+                    <Link href="/">Назад</Link> / <Link href="/catalog">Каталог</Link> / Сноуборды
+                </div>
+            </div>
+            <SnowboardsClient initialProducts={snowboards} />
         </div>
-      </div>
-      <div className={styles.content}>
-        <FilterSidebar category="snowboards" />
-        <ProductList products={snowboards} />
-      </div>
-    </div>
-  );
-};
-
-export default SnowboardsPage;
+    );
+}
