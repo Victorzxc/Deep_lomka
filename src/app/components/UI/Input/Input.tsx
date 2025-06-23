@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = ({ type, name, placeholder, value, onChange,
             onChange={onChange}
             required={required}
             className={styles.input}
-            maxLength={20}
+            maxLength={30}
         />
     );
 };

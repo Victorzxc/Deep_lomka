@@ -11,32 +11,23 @@ interface Props {
     initialProducts: Product[];
 }
 
-const PROTECTION_TYPE_CHARACTERISTIC_ID = 19;
 const SIZE_INT_CHARACTERISTIC_ID = 17;
-const HELMET_SIZE_CHARACTERISTIC_ID = 20;
 const AGE_CHARACTERISTIC_ID = 18;
 const GENDER_CHARACTERISTIC_ID = 8;
-
 
 export interface ProtectionFilters {
     priceFrom: number;
     priceTo: number;
-    protectionTypes: string[];
     brands: string[];
     ages: string[];
     genders: string[];
     sizeInt: string[];
-    helmetSizeFrom?: number;
-    helmetSizeTo?: number;
 }
-
 
 const BRAND_MAP: Record<string, number> = {
     Briko: 14,
     POC: 15,
     UFO: 16,
-    K2: 11,
-    Rossignol: 8
 };
 
 const ProtectionClient: React.FC<Props> = ({ initialProducts }) => {
@@ -48,15 +39,6 @@ const ProtectionClient: React.FC<Props> = ({ initialProducts }) => {
         try {
             const characteristics: { characteristicId: number; value: string }[] = [];
 
-            if (filters.protectionTypes?.length) {
-                characteristics.push(
-                    ...filters.protectionTypes.map((type: string) => ({
-                        characteristicId: PROTECTION_TYPE_CHARACTERISTIC_ID,
-                        value: type
-                    }))
-                );
-            }
-
             if (filters.sizeInt?.length) {
                 characteristics.push(
                     ...filters.sizeInt.map((size: string) => ({
@@ -64,16 +46,6 @@ const ProtectionClient: React.FC<Props> = ({ initialProducts }) => {
                         value: size
                     }))
                 );
-            }
-
-            if (
-                filters.helmetSizeFrom !== undefined &&
-                filters.helmetSizeTo !== undefined
-            ) {
-                characteristics.push({
-                    characteristicId: HELMET_SIZE_CHARACTERISTIC_ID,
-                    value: `${filters.helmetSizeFrom}-${filters.helmetSizeTo}`
-                });
             }
 
             if (filters.ages?.length) {

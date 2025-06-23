@@ -33,6 +33,7 @@ const RegisterForm = () => {
 
             if (response.ok) {
                 login(data.token);
+
                 alert('Регистрация прошла успешно!');
             } else {
                 setError(data.message || 'Ошибка регистрации');
@@ -91,12 +92,13 @@ const RegisterForm = () => {
                     <input
                         type="checkbox"
                         name="agreement"
+
                         checked={formData.agreement}
                         onChange={handleChange}
+
                     />
                     Согласие на обработку данных
                 </label>
-
                 <Button
                     type="submit"
                     disabled={!isFormValid}
@@ -105,9 +107,11 @@ const RegisterForm = () => {
                     Зарегистрироваться
                 </Button>
                 <Link href="/login" className={styles.authButton}> Авторизация</Link>
+
             </form>
         </>
     );
 };
+
 
 export default RegisterForm;

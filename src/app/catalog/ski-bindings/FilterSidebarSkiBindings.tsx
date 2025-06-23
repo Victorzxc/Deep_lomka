@@ -28,7 +28,7 @@ const DIN_VALUES = [
     '2.0-7.0', '2.5-10.0',
 ];
 const STANDARDS = ['GripWalk/Alpine', 'GripWalk', 'ISO 9523 Touring', 'ISO 5355 Alpine'];
-const MOUNTAIN_TYPES = ['Фрирайд', 'Скитур', 'Олмаунтин'];
+const MOUNTAIN_TYPES = ['Фрирайд', 'Скитур', 'Олмаунтин', 'Гонки'];
 
 const FilterSidebarSkiBindings: React.FC<FilterSidebarProps> = ({ category, onApplyFilters }) => {
     const [priceFrom, setPriceFrom] = useState<number | ''>('');

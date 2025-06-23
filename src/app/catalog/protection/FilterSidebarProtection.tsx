@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import { Range } from 'react-range';
 import styles from '@/app/components/FilterSidebarStyles/FilterSidebar.module.scss';
 
 import {
@@ -10,58 +9,33 @@ import {
     MAX_PRICE,
 } from '@/app/utils/filterHandlers';
 
-const PROTECTION_TYPES = ['Защита спины', 'Защита головы', 'Защита бёдер'];
-const BRANDS = ['Briko', 'POC', 'UFO', 'K2', 'Rossignol'];
+const BRANDS = ['Briko', 'POC', 'UFO'];
 const AGE_GROUPS = ['Для детей', 'Для взрослых', 'Для подростков'];
 const GENDERS = ['Женский', 'Унисекс'];
 const SIZE_INT = ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL'];
-const MIN_HELMET_SIZE = 48;
-const MAX_HELMET_SIZE = 67;
 
 interface FilterSidebarProps {
     category: string;
     onApplyFilters: (filters: {
         priceFrom: number;
         priceTo: number;
-        protectionTypes: string[];
         brands: string[];
         ages: string[];
         genders: string[];
         sizeInt: string[];
-        helmetSizeFrom?: number;
-        helmetSizeTo?: number;
     }) => void;
 }
 
 const FilterSidebarProtection: React.FC<FilterSidebarProps> = ({ category, onApplyFilters }) => {
     const [priceFrom, setPriceFrom] = useState<number | ''>('');
     const [priceTo, setPriceTo] = useState<number | ''>('');
-    const [selectedProtectionTypes, setSelectedProtectionTypes] = useState<string[]>([]);
     const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
     const [selectedAges, setSelectedAges] = useState<string[]>([]);
     const [selectedGenders, setSelectedGenders] = useState<string[]>([]);
     const [selectedSizeInt, setSelectedSizeInt] = useState<string[]>([]);
-    const [helmetSizeRange, setHelmetSizeRange] = useState<number[]>([MIN_HELMET_SIZE, MAX_HELMET_SIZE]);
-
-    const isHelmetSizeDisabled = selectedSizeInt.length > 0;
 
     const handlePriceFromChange = useCallback(createPriceChangeHandler(setPriceFrom), [setPriceFrom]);
     const handlePriceToChange = useCallback(createPriceChangeHandler(setPriceTo), [setPriceTo]);
-
-    const handleHelmetSizeChange = useCallback(
-        (values: number[]) => {
-            if (!isHelmetSizeDisabled) {
-                setHelmetSizeRange(values);
-            }
-        },
-        [isHelmetSizeDisabled]
-    );
-
-
-    const handleProtectionTypeToggle = useCallback(
-        (type: string) => createToggleHandler(type, selectedProtectionTypes, setSelectedProtectionTypes),
-        [selectedProtectionTypes, setSelectedProtectionTypes]
-    );
 
     const handleBrandToggle = useCallback(
         (brand: string) => createToggleHandler(brand, selectedBrands, setSelectedBrands),
@@ -87,50 +61,35 @@ const FilterSidebarProtection: React.FC<FilterSidebarProps> = ({ category, onApp
         onApplyFilters({
             priceFrom: priceFrom || 0,
             priceTo: priceTo || 0,
-            protectionTypes: selectedProtectionTypes,
             brands: selectedBrands,
             ages: selectedAges,
             genders: selectedGenders,
             sizeInt: selectedSizeInt,
-            ...(isHelmetSizeDisabled
-                ? {}
-                : {
-                    helmetSizeFrom: helmetSizeRange[0],
-                    helmetSizeTo: helmetSizeRange[1],
-                }),
         });
     }, [
         priceFrom,
         priceTo,
-        selectedProtectionTypes,
         selectedBrands,
         selectedAges,
         selectedGenders,
         selectedSizeInt,
-        helmetSizeRange,
-        isHelmetSizeDisabled,
         onApplyFilters,
     ]);
 
     const resetFilters = useCallback(() => {
         setPriceFrom('');
         setPriceTo('');
-        setSelectedProtectionTypes([]);
         setSelectedBrands([]);
         setSelectedAges([]);
         setSelectedGenders([]);
         setSelectedSizeInt([]);
-        setHelmetSizeRange([MIN_HELMET_SIZE, MAX_HELMET_SIZE]);
         onApplyFilters({
             priceFrom: 0,
             priceTo: 0,
-            protectionTypes: [],
             brands: [],
             ages: [],
             genders: [],
             sizeInt: [],
-            helmetSizeFrom: MIN_HELMET_SIZE,
-            helmetSizeTo: MAX_HELMET_SIZE,
         });
     }, [onApplyFilters]);
 
@@ -152,38 +111,6 @@ const FilterSidebarProtection: React.FC<FilterSidebarProps> = ({ category, onApp
                     <label key={size}>
                         <input type="checkbox" checked={selectedSizeInt.includes(size)} onChange={handleSizeIntToggle(size)} />
                         {size}
-                    </label>
-                ))}
-            </div>
-
-            <div
-                className={styles.filterGroup}
-                style={{
-                    opacity: isHelmetSizeDisabled ? 0.5 : 1,
-                    pointerEvents: isHelmetSizeDisabled ? 'none' : 'auto',
-                }}
-            >
-                <h3>Размер шлема (см)</h3>
-                <Range
-                    step={1}
-                    min={MIN_HELMET_SIZE}
-                    max={MAX_HELMET_SIZE}
-                    values={helmetSizeRange}
-                    onChange={handleHelmetSizeChange}
-                    renderTrack={({ props, children }) => <div {...props} className={styles.rangeTrack}>{children}</div>}
-                    renderThumb={({ props, index }) => <div {...props} key={index} className={styles.rangeThumb} />}
-                />
-                <div>
-                    Выбрано: {helmetSizeRange[0]} см — {helmetSizeRange[1]} см
-                </div>
-            </div>
-
-            <div className={styles.filterGroup}>
-                <h3>Защита частей тела</h3>
-                {PROTECTION_TYPES.map((type) => (
-                    <label key={type}>
-                        <input type="checkbox" checked={selectedProtectionTypes.includes(type)} onChange={handleProtectionTypeToggle(type)} />
-                        {type}
                     </label>
                 ))}
             </div>
